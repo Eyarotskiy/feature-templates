@@ -5,21 +5,21 @@ daily basis, so that one can simply copy-paste necessary parts of the code to th
 
 ### Technologies / Frameworks
 
-  - **Node.js + Express**
-  - **React + Redux**
-  - **Jest**
-  - **MongoDB + Mongoose**
-  - **Heroku**
+  - Node.js + Express
+  - React + Redux
+  - Jest
+  - MongoDB + Mongoose
+  - Heroku
   
 ### Implemented Features
 
-  - **React routing**
-  - **REST API and WebSocket** 
-  - **File upload** 
-  - **Authentication + Authorization (via Json Web Token)**
-  - **Google Analytics**
-  - **Email notification**
-  - **Cron Jobs**
+  - React routing
+  - REST API and WebSocket 
+  - File upload 
+  - Authentication + Authorization (via Json Web Token)
+  - Google Analytics
+  - Email notification
+  - Cron Jobs
 
 ### NPM commands
   
