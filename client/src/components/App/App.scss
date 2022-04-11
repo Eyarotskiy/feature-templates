@@ -1,0 +1,93 @@
+@import "../../common/variables";
+
+.App {
+  background:
+    linear-gradient(90deg, #7E898F 0%, #636C75 100%),
+    radial-gradient(at top, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.55) 100%),
+    radial-gradient(at top, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.08) 63%);
+  background-blend-mode: multiply, screen;
+  min-height: 100vh;
+  padding: 10px 10% 20px;
+}
+
+.title {
+  color: $color-orange;
+  font-size: $font-title;
+  margin: 40px 0;
+  text-align: center;
+  text-shadow: $text-shadow;
+}
+
+.subtitle {
+  color: $color-blue;
+  font-size: $font-subtitle;
+  text-shadow: $text-shadow;
+}
+
+.divider {
+  background-color: $bg-white;
+  height: 1px;
+  margin: 30px auto;
+  width: 50%;
+
+  &.dashed {
+    background-color: transparent;
+    border-top: 1px dashed $border-white;
+  }
+}
+
+.btn {
+  border: 1px solid $border-black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: $font-btn;
+  font-weight: 700;
+  outline: none;
+  padding: 10px 20px;
+  text-shadow: $text-shadow;
+}
+
+.btn-blue {
+  background: linear-gradient(#3e60c2,#7d88ff);
+  color: $color-white;
+}
+
+.btn-grey {
+  background: linear-gradient(#cecece,#575757);
+  color: $color-white;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.nav a:not(:last-child) {
+  border-right: 1px solid $border-white;
+}
+
+.nav-link {
+  color: $color-blue;
+  font-size: $font-nav;
+  font-weight: 700;
+  padding: 10px 40px;
+  text-decoration: underline;
+  transition: 0.3s all ease;
+}
+
+.nav-link:hover {
+  background-color: $bg-dark-grey;
+}
+
+.text {
+  color: $color-white;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}

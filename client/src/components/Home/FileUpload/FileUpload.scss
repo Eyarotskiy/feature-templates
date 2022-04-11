@@ -1,0 +1,19 @@
+@import "../../../common/variables";
+
+.FileUpload {
+  text-align: center;
+
+  .file-name {
+    color: $color-white;
+    text-decoration: underline;
+  }
+
+  .uploaded-image {
+    display: block;
+    margin: 20px auto;
+  }
+
+  .form {
+    display: inline-block;
+  }
+}

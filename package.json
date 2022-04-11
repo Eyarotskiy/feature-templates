@@ -1,0 +1,61 @@
+{
+	"name": "feature-templates",
+	"version": "1.0.0",
+	"description": "Feature templates project",
+	"main": "server/app.js",
+	"scripts": {
+		"client:install": "cd client && npm install",
+		"client:test": "cd client && npm run test",
+		"start": "cd server/build && node app.js",
+		"server": "cd server && nodemon --watch \"**/*.ts\" --exec \"ts-node\" app.ts",
+		"server:build": "tsc -p . --outDir server/build --sourceMap false --inlineSources false",
+		"server:test": "jest --verbose ./server",
+		"client": "npm start --prefix client",
+		"app": "concurrently \"npm run server\" \"npm run client\"",
+		"deploy": "git push heroku master",
+		"heroku-postbuild": "cd client && npm install && npm run build"
+	},
+	"author": "Yevhenii Yarotskyi",
+	"license": "MIT",
+	"engines": {
+		"node": "12.x"
+	},
+	"jest": {
+		"testMatch": [
+			"**/__tests__/**/*.ts?(x)",
+			"**/?(*.)+(spec|test).ts?(x)"
+		],
+		"transform": {
+			"^.+\\.tsx?$": "ts-jest"
+		}
+	},
+	"devDependencies": {
+		"@types/compression": "^1.7.0",
+		"@types/express": "^4.17.6",
+		"@types/mongoose": "^5.7.28",
+		"@types/node": "^14.0.14",
+		"nodemon": "^1.14.6",
+		"ts-node": "^8.10.2",
+		"typescript": "^3.9.5"
+	},
+	"dependencies": {
+		"@types/jest": "^27.4.1",
+		"axios": "^0.19.2",
+		"bcrypt": "^5.0.0",
+		"compression": "^1.7.4",
+		"concurrently": "^3.5.1",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-fileupload": "^1.1.7-alpha.3",
+		"jest": "^27.5.1",
+		"jsonwebtoken": "^8.5.1",
+		"mongodb": "^3.5.7",
+		"mongoose": "^5.9.13",
+		"node-cron": "^2.0.3",
+		"node-sass": "^4.14.1",
+		"nodemailer": "^6.4.11",
+		"path": "^0.12.7",
+		"socket.io": "^2.3.0",
+		"ts-jest": "^27.1.4"
+	}
+}
