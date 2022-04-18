@@ -14,7 +14,7 @@ yarn.lock
 /coverage
 
 # production
-client/build
+client-react/build
 
 # misc
 .DS_Store

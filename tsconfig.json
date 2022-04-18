@@ -68,6 +68,7 @@
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
   "exclude": [
-    "client"
+    "client-angular",
+    "client-react"
   ]
 }
