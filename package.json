@@ -4,13 +4,16 @@
 	"description": "Feature templates project",
 	"main": "server/app.js",
 	"scripts": {
+		"client-angular:test": "cd client-angular && npm run test",
 		"client-react:test": "cd client-react && npm run test",
 		"start": "cd server/build && node app.js",
 		"server": "cd server && nodemon --watch \"**/*.ts\" --exec \"ts-node\" app.ts",
 		"server:build": "tsc -p . --outDir server/build --sourceMap false --inlineSources false",
 		"server:test": "jest --verbose ./server",
+		"client-angular": "npm start --prefix client-angular",
 		"client-react": "npm start --prefix client-react",
 		"app": "npm run app:react",
+		"app:angular": "concurrently \"npm run server\" \"npm run client-angular\"",
 		"app:react": "concurrently \"npm run server\" \"npm run client-react\"",
 		"deploy": "git push heroku master",
 		"heroku-postbuild": "cd client-react && npm install && npm run build"
