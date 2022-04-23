@@ -16,9 +16,7 @@ function About(props: RouteComponentProps): JSX.Element {
 				Inner page
 			</Link>
 
-			<Route
-				path={`${props.match.path}/about-inner/:id`}
-				component={AboutInner} />
+			<Route path={`${props.match.path}/about-inner/:id`} component={AboutInner} />
 		</div>
 	);
 }

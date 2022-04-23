@@ -1,0 +1,10 @@
+<div class="about-component">
+  <h2 class="title">About Component</h2>
+  <a
+    class="nav-link"
+    [routerLink]="['/about/inner']"
+    [queryParams]="{id: 15, name: 'test'}">
+    Inner page
+  </a>
+  <router-outlet></router-outlet>
+</div>
