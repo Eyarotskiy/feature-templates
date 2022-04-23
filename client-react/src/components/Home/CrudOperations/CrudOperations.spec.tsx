@@ -7,7 +7,7 @@ import rootReducer from '../../../redux/reducers/reducers';
 import CrudOperations from './CrudOperations';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
-import {DishData, UserData} from '../../../common/types';
+import {DishData, UserData} from 'common/types';
 import WebSocket from '../../../Api/WebSocket';
 
 function renderWithRedux(

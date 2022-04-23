@@ -6,7 +6,7 @@ import {createStore} from 'redux';
 import rootReducer from '../../../redux/reducers/reducers';
 import {Provider} from 'react-redux';
 import axios from 'axios';
-import {UsersResponse} from '../../../common/types';
+import {UsersResponse} from 'common/types';
 import userEvent from '@testing-library/user-event/dist';
 
 describe('Login component', () => {

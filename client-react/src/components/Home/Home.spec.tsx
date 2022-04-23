@@ -5,7 +5,7 @@ import Home from './Home';
 import {createStore} from 'redux';
 import rootReducer from '../../redux/reducers/reducers';
 import {Provider} from 'react-redux';
-import {UsersResponse} from '../../common/types';
+import {UsersResponse} from 'common/types';
 import axios from 'axios';
 
 describe('Home component', () => {
