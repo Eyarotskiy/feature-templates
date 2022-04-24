@@ -4,7 +4,7 @@ import {
 	DishData,
 	DishName,
 	DishUpdateData,
-	LoginForm, SignInResponse,
+	LoginData, SignInResponse,
 	Token,
 	UserData, UsersResponse
 } from 'common/types';
@@ -38,7 +38,7 @@ class Api {
 		return axios.get('/api/users/get');
 	}
 
-	signInUser(payload: LoginForm): Promise<AxiosResponse<SignInResponse>> {
+	signInUser(payload: LoginData): Promise<AxiosResponse<SignInResponse>> {
 		return axios.post('/api/login/signIn', payload);
 	}
 
@@ -49,7 +49,7 @@ class Api {
 			});
 	}
 
-	signUpUser(payload: LoginForm): Promise<AxiosResponse<UsersResponse>> {
+	signUpUser(payload: LoginData): Promise<AxiosResponse<UsersResponse>> {
 		return axios.post('/api/login/signUp', payload);
 	}
 

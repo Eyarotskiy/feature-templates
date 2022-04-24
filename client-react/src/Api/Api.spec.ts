@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
 	AuthenticationResponse,
 	DishData, DishName, DishUpdateData,
-	LoginForm,
+	LoginData,
 	SignInResponse,
 	UserData,
 	UsersResponse
@@ -29,7 +29,7 @@ describe('Api', () => {
 		website: 'Test website',
 	};
 	const TEST_USERS_RESPONSE: UsersResponse = {users: ['name1', 'name2']};
-	const TEST_LOGIN_FORM_DATA: LoginForm = {
+	const TEST_LOGIN_FORM_DATA: LoginData = {
 		login: 'Test login',
 		password: 'Test password',
 	};

@@ -11,7 +11,7 @@ export interface UserData {
 	website: string,
 }
 
-export interface LoginForm {
+export interface LoginData {
 	login: 	LoginField,
 	password: PasswordField,
 }
