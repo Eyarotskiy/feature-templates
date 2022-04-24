@@ -57,7 +57,7 @@ function Login(): JSX.Element {
 	async function sendSignInRequest(e: FormEvent<HTMLButtonElement>) {
 		e.preventDefault();
 		resetFlags();
-		
+
 		try {
 			const payload = {login, password};
 			const response = await Api.signInUser(payload);
@@ -116,61 +116,77 @@ function Login(): JSX.Element {
 					<form className="form">
 						{
 							!isLoggedIn &&
-							<div>
-								<div className="login-container">
-									<div className="input-container">
-										<input
-											data-testid="login-input"
-											placeholder="Login"
-											type="text"
-											value={login}
-											onChange={handleLoginChange}/>
-										{
-											registrationExistsFlag &&
-											<span className="validation-msg">
-												User already exists
-											</span>
-										}
-										{
-											!loginExistsFlag &&
-											<span className="validation-msg">
-												Such user doesn't exist
-											</span>
-										}
-										{
-											!confirmationFlag &&
-											<span className="validation-msg">
-												Email is not confirmed
-											</span>
-										}
+							<>
+								<div>
+									<div className="login-container">
+										<div className="input-container">
+											<input
+												data-testid="login-input"
+												placeholder="Login"
+												type="text"
+												value={login}
+												onChange={handleLoginChange}/>
+											{
+												registrationExistsFlag &&
+												<span className="validation-msg">
+													User already exists
+												</span>
+											}
+											{
+												!loginExistsFlag &&
+												<span className="validation-msg">
+													Such user doesn't exist
+												</span>
+											}
+											{
+												!confirmationFlag &&
+												<span className="validation-msg">
+													Email is not confirmed
+												</span>
+											}
+										</div>
+										<div className="input-container">
+											<input
+												data-testid="password-input"
+												placeholder="Password"
+												type="password"
+												value={password}
+												onChange={handlePasswordChange}/>
+											{
+												!passwordMatchFlag &&
+												<span className="validation-msg">
+													Password is not correct
+												</span>
+											}
+										</div>
 									</div>
-									<div className="input-container">
-										<input
-											data-testid="password-input"
-											placeholder="Password"
-											type="password"
-											value={password}
-											onChange={handlePasswordChange}/>
-										{
-											!passwordMatchFlag &&
-											<span className="validation-msg">
-												Password is not correct
-											</span>
-										}
+									<div className="btn-container">
+										<button className="btn btn-blue" onClick={sendSignUpRequest}>
+											Sign Up (Add user)
+										</button>
+										<button
+											className="btn btn-blue"
+											data-testid="sign-in-button"
+											onClick={sendSignInRequest}>
+											Sign in
+										</button>
 									</div>
 								</div>
-								<div className="btn-container">
-									<button className="btn btn-blue" onClick={sendSignUpRequest}>
-										Sign Up (Add user)
-									</button>
-									<button
-										className="btn btn-blue"
-										data-testid="sign-in-button"
-										onClick={sendSignInRequest}>
-										Sign in
-									</button>
+								<div className="users-list">
+									<h3 className="users-title">Test account:</h3>
+									<div className="users-row"><strong>Login:&nbsp;</strong>test@test.com</div>
+									<div className="users-row"><strong>Password:&nbsp;</strong>1</div>
+									{
+										users?.length &&
+										<h3 className="users-title">Registered users:</h3>
+									}
+									{users?.map((user, index) => (
+										<span key={index} className="users-name" data-testid="user-list">
+											{user}{index !== users.length - 1 && ', '}
+										</span>
+									))}
 								</div>
-							</div>
+							</>
 						}
 						{
 							isLoggedIn &&
@@ -189,28 +205,6 @@ function Login(): JSX.Element {
 							</div>
 						}
 					</form>
-					{
-						!isLoggedIn &&
-						<div className="users-list">
-							<h3 className="users-title">Test account:</h3>
-							<div className="users-row">
-								<strong>Login: </strong> test@test.com
-							</div>
-							<div className="users-row"><strong>Password: </strong> 1</div>
-							{
-								users?.length &&
-								<h3 className="users-title">Registered users:</h3>
-							}
-							{users?.map((user, index) => (
-								<span
-									key={index}
-									className="users-name"
-									data-testid="user-list">
-									{user}{index !== users.length - 1 && ', '}
-								</span>
-							))}
-						</div>
-					}
 				</>
 			}
 		</div>
