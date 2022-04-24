@@ -1,9 +1,3 @@
-export type LoginField = string;
-
-export type PasswordField = string;
-
-export type Token = string;
-
 export interface UserData {
 	id: string,
 	name: string,
@@ -12,8 +6,8 @@ export interface UserData {
 }
 
 export interface LoginData {
-	login: 	LoginField,
-	password: PasswordField,
+	login: string,
+	password: string,
 }
 
 export interface DishData {

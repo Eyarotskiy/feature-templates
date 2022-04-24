@@ -5,7 +5,6 @@ import {
 	DishName,
 	DishUpdateData,
 	LoginData, SignInResponse,
-	Token,
 	UserData, UsersResponse
 } from 'common/types';
 
@@ -42,7 +41,7 @@ class Api {
 		return axios.post('/api/login/signIn', payload);
 	}
 
-	authenticateUser(token: Token): Promise<AxiosResponse<AuthenticationResponse>> {
+	authenticateUser(token: string): Promise<AxiosResponse<AuthenticationResponse>> {
 		return axios.get(
 			'/api/login/authenticate',
 			{headers: {'auth-token': token},

@@ -7,10 +7,10 @@ import {ReduxState} from 'common/types';
 
 function Login(): JSX.Element {
 	const [users, setUsers] = useState([] as string[]);
-	const [loginExistsFlag, setLoginExistsFlag] = useState(true);
-	const [confirmationFlag, setConfirmationFlag] = useState(true);
-	const [passwordMatchFlag, setPasswordMatchFlag] = useState(true);
-	const [registrationExistsFlag, setRegistrationExistsFlag] = useState(false);
+	const [loginUserExistsError, setLoginUserExistsError] = useState(true);
+	const [emailConfirmationError, setEmailConfirmationError] = useState(true);
+	const [incorrectPasswordError, setIncorrectPasswordError] = useState(true);
+	const [registrationUserExistsError, setRegistrationUserExistsError] = useState(false);
 	const [login, setLogin] = useState('test@test.com');
 	const [isLoading, setIsLoading] = useState(true);
 	const [password, setPassword] = useState('1');
@@ -50,7 +50,7 @@ function Login(): JSX.Element {
 			setUsers(response.data.users);
 		} catch (e) {
 			const userExists = e?.response?.status === 403;
-			setRegistrationExistsFlag(userExists);
+			setRegistrationUserExistsError(userExists);
 		}
 	}
 
@@ -69,9 +69,9 @@ function Login(): JSX.Element {
 			const loginError = e?.response?.status === 404;
 			const confirmationError = e?.response?.status === 403;
 			const passwordError = e?.response?.status === 401;
-			setLoginExistsFlag(!loginError);
-			setConfirmationFlag(!confirmationError);
-			setPasswordMatchFlag(!passwordError);
+			setLoginUserExistsError(!loginError);
+			setEmailConfirmationError(!confirmationError);
+			setIncorrectPasswordError(!passwordError);
 		}
 	}
 
@@ -94,9 +94,9 @@ function Login(): JSX.Element {
 	}
 
 	function resetFlags() {
-		setLoginExistsFlag(true);
-		setPasswordMatchFlag(true);
-		setRegistrationExistsFlag(false);
+		setLoginUserExistsError(true);
+		setIncorrectPasswordError(true);
+		setRegistrationUserExistsError(false);
 	}
 
 	return (
@@ -127,19 +127,19 @@ function Login(): JSX.Element {
 												value={login}
 												onChange={handleLoginChange}/>
 											{
-												registrationExistsFlag &&
+												registrationUserExistsError &&
 												<span className="validation-msg">
 													User already exists
 												</span>
 											}
 											{
-												!loginExistsFlag &&
+												!loginUserExistsError &&
 												<span className="validation-msg">
 													Such user doesn't exist
 												</span>
 											}
 											{
-												!confirmationFlag &&
+												!emailConfirmationError &&
 												<span className="validation-msg">
 													Email is not confirmed
 												</span>
@@ -153,7 +153,7 @@ function Login(): JSX.Element {
 												value={password}
 												onChange={handlePasswordChange}/>
 											{
-												!passwordMatchFlag &&
+												!incorrectPasswordError &&
 												<span className="validation-msg">
 													Password is not correct
 												</span>
