@@ -11,6 +11,7 @@ function Login(): JSX.Element {
 	const [emailConfirmationError, setEmailConfirmationError] = useState(true);
 	const [incorrectPasswordError, setIncorrectPasswordError] = useState(true);
 	const [registrationUserExistsError, setRegistrationUserExistsError] = useState(false);
+	const [commonError, setCommonError] = useState(false);
 	const [login, setLogin] = useState('test@test.com');
 	const [isLoading, setIsLoading] = useState(true);
 	const [password, setPassword] = useState('1');
@@ -49,8 +50,11 @@ function Login(): JSX.Element {
 			const response = await Api.signUpUser(payload);
 			setUsers(response.data.users);
 		} catch (e) {
-			const userExists = e?.response?.status === 403;
-			setRegistrationUserExistsError(userExists);
+			if (e?.response?.status === 403) {
+				setRegistrationUserExistsError(true);
+			} else {
+				setCommonError(true);
+			}
 		}
 	}
 
@@ -97,6 +101,7 @@ function Login(): JSX.Element {
 		setLoginUserExistsError(true);
 		setIncorrectPasswordError(true);
 		setRegistrationUserExistsError(false);
+		setCommonError(false);
 	}
 
 	return (
@@ -156,6 +161,12 @@ function Login(): JSX.Element {
 												!incorrectPasswordError &&
 												<span className="validation-msg">
 													Password is not correct
+												</span>
+											}
+											{
+												commonError &&
+												<span className="validation-msg">
+													Error upon user sign up
 												</span>
 											}
 										</div>
