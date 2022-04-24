@@ -40,7 +40,7 @@ function Confirmation(): JSX.Element {
 			</p>
 			{
 				statusFlag &&
-				<a href="/" className="link btn btn-blue">
+				<a href="/" className="link button button-blue">
 					Go to main page
 				</a>
 			}

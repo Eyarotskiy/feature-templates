@@ -31,7 +31,7 @@ function FileUpload(): JSX.Element {
 		<div className="FileUpload">
 			<h2 className="title">File Upload</h2>
 			<form className="form">
-				<label htmlFor="upload-input" className="btn btn-blue">
+				<label htmlFor="upload-input" className="button button-blue">
 					Select file to upload
 				</label>
 				<h4 className="file-name">{fileName}</h4>
@@ -45,7 +45,7 @@ function FileUpload(): JSX.Element {
 					fileName.length > 0 &&
 					<button
 						data-testid="upload-button"
-						className="btn btn-blue"
+						className="button button-blue"
 						onClick={uploadFile}>
 						Upload file to server
 					</button>

@@ -160,12 +160,12 @@ function Login(): JSX.Element {
 											}
 										</div>
 									</div>
-									<div className="btn-container">
-										<button className="btn btn-blue" onClick={sendSignUpRequest}>
+									<div className="button-container">
+										<button className="button button-blue" onClick={sendSignUpRequest}>
 											Sign Up (Add user)
 										</button>
 										<button
-											className="btn btn-blue"
+											className="button button-blue"
 											data-testid="sign-in-button"
 											onClick={sendSignInRequest}>
 											Sign in
@@ -194,9 +194,9 @@ function Login(): JSX.Element {
 								<h4 className="welcome-message" data-testid="welcome-message">
 									Welcome, <strong>{login}</strong>
 								</h4>
-								<div className="btn-container">
+								<div className="button-container">
 									<button
-										className="btn btn-blue"
+										className="button button-blue"
 										data-testid="log-out-button"
 										onClick={logOutUser}>
 										Log out

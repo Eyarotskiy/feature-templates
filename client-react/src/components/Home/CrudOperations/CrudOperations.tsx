@@ -73,19 +73,19 @@ function CrudOperations(): JSX.Element {
 			<div className="container">
 				<div className="container-wrapper">
 					<h3 className="subtitle">REST API</h3>
-					<button className="btn btn-blue" onClick={getData}>
+					<button className="button button-blue" onClick={getData}>
 						Get users (external API request)
 					</button>
 					<Users users={users} />
 				</div>
 				<div className="container-wrapper">
 					<h3 className="subtitle">Websocket</h3>
-					<button className="btn btn-blue" onClick={getMenu}>
+					<button className="button button-blue" onClick={getMenu}>
 						Get menu (from application  DB)
 					</button>
 					<Menu menu={menu} />
 					<div className="form-wrapper-single">
-						<button className="btn btn-blue" onClick={clearMenu}>
+						<button className="button button-blue" onClick={clearMenu}>
 							Clear menu
 						</button>
 					</div>
@@ -97,7 +97,7 @@ function CrudOperations(): JSX.Element {
 								type="text"
 								value={dishCreateName}
 								onChange={handleDishCreateNameChange} />
-							<button className="btn btn-blue" onClick={saveDish}>
+							<button className="button button-blue" onClick={saveDish}>
 								Save dish
 							</button>
 						</div>
@@ -108,7 +108,7 @@ function CrudOperations(): JSX.Element {
 								type="text"
 								value={dishDeleteName}
 								onChange={handleDishDeleteNameChange} />
-							<button className="btn btn-blue" onClick={deleteDish}>
+							<button className="button button-blue" onClick={deleteDish}>
 								Delete dish
 							</button>
 						</div>
@@ -125,7 +125,7 @@ function CrudOperations(): JSX.Element {
 								type="text"
 								value={dishNewUpdateName}
 								onChange={handleDishNewUpdateNameChange} />
-							<button className="btn btn-blue" onClick={updateDish}>
+							<button className="button button-blue" onClick={updateDish}>
 								Update dish
 							</button>
 						</div>

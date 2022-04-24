@@ -36,23 +36,23 @@
   }
 }
 
-.btn {
+.button {
   border: 1px solid $border-black;
   border-radius: 5px;
   cursor: pointer;
-  font-size: $font-btn;
+  font-size: $font-button;
   font-weight: 700;
   outline: none;
   padding: 10px 20px;
   text-shadow: $text-shadow;
 }
 
-.btn-blue {
+.button-blue {
   background: linear-gradient(#3e60c2,#7d88ff);
   color: $color-white;
 }
 
-.btn-grey {
+.button-grey {
   background: linear-gradient(#cecece,#575757);
   color: $color-white;
 }

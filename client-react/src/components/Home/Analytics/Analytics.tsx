@@ -15,7 +15,7 @@ function Analytics(): JSX.Element {
 	return (
 		<div className="Analytics">
 			<h2 className="title">Google Analytics</h2>
-			<button className="btn btn-blue" onClick={handleClick}>
+			<button className="button button-blue" onClick={handleClick}>
 				Track Event to GA
 			</button>
 		</div>
