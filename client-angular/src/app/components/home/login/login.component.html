@@ -1,0 +1,55 @@
+<h2 class="title">Login (Json Web Token)</h2>
+<h3 class="info">
+  Login status:
+  <span class="status" [ngClass]="{'success': isUserLoggedIn, 'warning': !isUserLoggedIn}">
+  logged {{isUserLoggedIn ? 'in' : 'out'}}
+  </span>
+</h3>
+<div class="form">
+  <ng-container *ngIf="!isUserLoggedIn">
+    <div class="login-container">
+      <div class="input-container">
+        <input placeholder="Login" type="text" [(ngModel)]="fields.login">
+        <span class="validation-msg" *ngIf="errors.registrationUserExistsError">Such user already exists</span>
+        <span class="validation-msg" *ngIf="errors.loginUserExistsError">Such user doesn't exist</span>
+        <span class="validation-msg" *ngIf="errors.emailConfirmationError">Email is not confirmed</span>
+      </div>
+      <div class="input-container">
+        <input placeholder="Password" type="password" [(ngModel)]="fields.password">
+        <span class="validation-msg" *ngIf="errors.incorrectPasswordError">
+        Password is not correct
+      </span>
+        <span class="validation-msg" *ngIf="errors.commonError">
+        Error upon user sign up
+      </span>
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="button button-blue" (click)="handleSignUpClick()">
+        Sign Up (Add user)
+      </button>
+      <button class="button button-blue" (click)="handleSignInClick()">
+        Sign in
+      </button>
+    </div>
+    <div class="users-list">
+      <h3 class="users-title">Test account:</h3>
+      <div class="users-row"><strong>Login:&nbsp;</strong>test@test.com</div>
+      <div class="users-row"><strong>Password:&nbsp;</strong>1</div>
+      <h3 class="users-title" *ngIf="users.length">Registered users:</h3>
+      <span class="users-name" *ngFor="let user of users; let last = last">
+      {{user}}{{last ? '' : ', '}}
+    </span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isUserLoggedIn">
+    <h4 class="welcome-message">
+      Welcome, <strong>{{fields.login}}</strong>
+    </h4>
+    <div class="button-container">
+      <button class="button button-blue" (click)="handleSignOutClick()">
+        Sign out
+      </button>
+    </div>
+  </ng-container>
+</div>
