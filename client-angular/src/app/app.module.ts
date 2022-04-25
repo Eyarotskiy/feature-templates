@@ -13,7 +13,7 @@ import { AboutRoutingModule } from 'src/app/components/about/about-routing.modul
 import { LoginComponent } from './components/home/login/login.component';
 import { ApiService } from 'src/app/services/api/api.service';
 import { DataService } from 'src/app/services/data/data.service';
-import { AuthInterceptor } from 'src/app/http-interceptors/auth-interceptor.service';
+import { AuthInterceptor } from 'src/app/http-interceptors/auth-interceptor';
 
 const httpInterceptor = [
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
