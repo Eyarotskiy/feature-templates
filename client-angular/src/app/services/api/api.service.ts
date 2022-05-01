@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { AuthenticationResponse, LoginData, SignInResponse, UsersResponse } from 'src/app/shared/types';
+import {
+  AuthenticationResponse,
+  DishData,
+  LoginData,
+  SignInResponse,
+  UserData,
+  UsersResponse
+} from 'src/app/shared/types';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -9,6 +16,14 @@ import { catchError } from 'rxjs/operators';
 })
 export class ApiService {
   constructor(private http: HttpClient) { }
+
+  getData(): Observable<UserData[]> {
+    return this.http.get<UserData[]>('/api/data/get').pipe(catchError(this.handleError));
+  }
+
+  getMenu(): Observable<DishData[]> {
+    return this.http.get<DishData[]>('/api/menu/get').pipe(catchError(this.handleError));
+  }
 
   getUsers(): Observable<UsersResponse> {
     return this.http.get<UsersResponse>('/api/users/get').pipe(catchError(this.handleError));

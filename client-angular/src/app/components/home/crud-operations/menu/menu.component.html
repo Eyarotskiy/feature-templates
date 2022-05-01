@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Dish ID</th>
+    <th>Dish Creation Date</th>
+    <th>Dish Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dish of menu">
+    <td>{{dish._id}}</td>
+    <td>{{formatDate(dish.creation_date)}}</td>
+    <td>{{dish.name}}</td>
+  </tr>
+  </tbody>
+</table>

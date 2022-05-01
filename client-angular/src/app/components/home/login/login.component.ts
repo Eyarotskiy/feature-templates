@@ -16,7 +16,7 @@ import { DataService } from 'src/app/services/data/data.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  private subscription?: Subscription;
+  private loginSubscription?: Subscription;
   users: string[] = [];
   isUserLoggedIn = false;
   fields = {login: 'test@test.com', password: '1'};
@@ -33,11 +33,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (localStorage.getItem('token')) this.sendAuthenticationRequest();
     this.getUsers();
-    this.subscription = this.data.isUserLoggedIn.subscribe((value: boolean) => this.isUserLoggedIn = value);
+    this.loginSubscription = this.data.isUserLoggedIn.subscribe((value: boolean) => this.isUserLoggedIn = value);
   }
 
   ngOnDestroy() {
-    this.subscription?.unsubscribe();
+    this.loginSubscription?.unsubscribe();
   }
 
   getUsers() {

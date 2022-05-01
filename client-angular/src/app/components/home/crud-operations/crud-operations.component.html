@@ -1,0 +1,45 @@
+<section class="crud-operations-component">
+  <h2 class="title mb-0">CRUD operations</h2>
+  <div class="container">
+    <div class="container-wrapper">
+      <h3 class="subtitle">REST API</h3>
+      <button class="button button-blue" (click)="getData()">
+        Get users (external API request)
+      </button>
+      <app-users [users]="users"></app-users>
+    </div>
+    <div class="container-wrapper">
+      <h3 class="subtitle">Websocket</h3>
+      <button class="button button-blue" (click)="getMenu()">
+        Get menu (from application  DB)
+      </button>
+      <app-menu [menu]="menu"></app-menu>
+      <div class="form-wrapper-single">
+        <button class="button button-blue" (click)="clearMenu()">
+          Clear menu
+        </button>
+      </div>
+      <div class="form-wrapper">
+        <div class="form-container">
+          <input class="form-input" placeholder="Dish name" type="text" [(ngModel)]="dishCreateName">
+          <button class="button button-blue" (click)="saveDish()">
+            Save dish
+          </button>
+        </div>
+        <div class="form-container">
+          <input class="form-input" placeholder="Dish name" type="text" [(ngModel)]="dishDeleteName">
+          <button class="button button-blue" (click)="deleteDish()">
+            Delete dish
+          </button>
+        </div>
+        <div class="form-container">
+          <input class="form-input" placeholder="Dish name" type="text" [(ngModel)]="dishOldUpdateName">
+          <input class="form-input" placeholder="New dish name" type="text" [(ngModel)]="dishNewUpdateName">
+          <button class="button button-blue" (click)="updateDish()">
+            Update dish
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
