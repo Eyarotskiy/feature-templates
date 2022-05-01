@@ -48,27 +48,26 @@ var FileApi = /** @class */ (function () {
     }
     FileApi.prototype.handleFileUploadRequest = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var file, destinationPath, result, error_1;
+            var file, destinationPath, host, result, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        if (!fs_1.default.existsSync(constants_1.SERVER_STATIC_FILES_DIRECTORY)) {
-                            fs_1.default.mkdirSync(constants_1.SERVER_STATIC_FILES_DIRECTORY);
+                        if (!fs_1["default"].existsSync(constants_1.SERVER_STATIC_FILES_DIRECTORY)) {
+                            fs_1["default"].mkdirSync(constants_1.SERVER_STATIC_FILES_DIRECTORY);
                         }
                         file = req.files.file;
-                        destinationPath = path_1.default.join(constants_1.SERVER_STATIC_FILES_DIRECTORY, '/', file.name);
+                        destinationPath = path_1["default"].join(constants_1.SERVER_STATIC_FILES_DIRECTORY, '/', file.name);
+                        host = process.env.NODE_ENV === 'local' ? "localhost:" + constants_1.PORT : req.get('host');
                         return [4 /*yield*/, file.mv(destinationPath)];
                     case 1:
                         _a.sent();
-                        result = {
-                            url: req.protocol + "://" + req.get('host') + "/" + file.name,
-                        };
-                        Api_1.default.sendSuccess(res, result);
+                        result = { url: req.protocol + "://" + host + "/" + file.name };
+                        Api_1["default"].sendSuccess(res, result);
                         return [3 /*break*/, 3];
                     case 2:
                         error_1 = _a.sent();
-                        Api_1.default.sendError(res, 500, error_1);
+                        Api_1["default"].sendError(res, 500, error_1);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }

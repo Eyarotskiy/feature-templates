@@ -33,7 +33,7 @@ daily basis, so that one can simply copy-paste necessary parts of the code to th
    
 **Server runs on http://localhost:5000 and client on http://localhost:3000**
 
-### App Configuration
+### App Configuration & Possible Errors
 
   - Run **heroku create** inside app root (in console) to connect our app to heroku.
   - Add mLab addon in Heroku dashboard and create DB. 
@@ -52,6 +52,7 @@ daily basis, so that one can simply copy-paste necessary parts of the code to th
   - Another DB connection failure might be connected to the IP whitelist. Try to add your IP in 
   https://cloud.mongodb.com/ => Security => Network Access => Add Ip Address => Add current IP address 
   - Email confirmation functionality might fail with error because of Google policy
+  - If TS files don't compile automatically into JS in server folder run `tsc server/app.ts` to trigger manual compilation.  
   
 ### Heroku
   
