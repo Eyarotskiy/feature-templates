@@ -31,23 +31,9 @@ export interface DishData {
   name: string,
 }
 
-export interface DishName {
-  dishName: string,
-}
-
 export interface DishUpdateData {
   oldDishName: string,
   newDishName: string,
-}
-
-// React component props
-
-export interface MenuProps {
-  menu: DishData[],
-}
-
-export interface UsersProps {
-  users: UserData[],
 }
 
 // API responses
@@ -67,19 +53,4 @@ export interface AuthenticationResponse {
 
 export interface FileUploadResponse {
   url: string,
-}
-
-// Redux instances
-
-export interface ReduxState {
-  loginReducer: LoginReducer,
-  userReducer: UserReducer,
-}
-
-export interface UserReducer {
-  users: UserData[],
-}
-
-export interface LoginReducer {
-  isLoggedIn: boolean,
 }
