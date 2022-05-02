@@ -1,0 +1,12 @@
+<div class="file-upload-component">
+  <h2 class="title">File Upload</h2>
+  <label for="upload-input" class="button button-blue">
+    Select file to upload
+  </label>
+  <input class="file-input" id="upload-input" type="file" (change)="handleFileUploadClick($event)">
+  <h4 class="file-name">{{fileName}}</h4>
+  <button class="button button-blue" *ngIf="fileName" (click)="uploadFile()">
+    Upload file to server
+  </button>
+  <img alt="uploaded" class="uploaded-image" [src]="imageUrl" *ngIf="imageUrl">
+</div>

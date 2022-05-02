@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
   AuthenticationResponse,
-  DishData,
+  DishData, FileUploadResponse,
   LoginData,
   SignInResponse,
   UserData,
@@ -35,6 +35,10 @@ export class ApiService {
 
   sendSignUpRequest(payload: LoginData): Observable<UsersResponse> {
     return this.http.post<UsersResponse>('/api/login/signUp', payload).pipe(catchError(this.handleError));
+  }
+
+  uploadFile(payload: FormData): Observable<FileUploadResponse> {
+    return this.http.post<FileUploadResponse>('/api/file/upload', payload).pipe(catchError(this.handleError));
   }
 
   authenticateUser(): Observable<AuthenticationResponse> {

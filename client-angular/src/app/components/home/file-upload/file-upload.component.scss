@@ -1,0 +1,23 @@
+@import "src/style/variables";
+
+.file-upload-component {
+  text-align: center;
+}
+
+.file-name {
+  color: $color-white;
+  text-decoration: underline;
+}
+
+.uploaded-image {
+  display: block;
+  margin: 20px auto;
+}
+
+.form {
+  display: inline-block;
+}
+
+.file-input {
+  display: none;
+}

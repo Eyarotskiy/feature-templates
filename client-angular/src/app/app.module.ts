@@ -19,6 +19,7 @@ import { CrudOperationsComponent } from './components/home/crud-operations/crud-
 import { UsersComponent } from './components/home/crud-operations/users/users.component';
 import { MenuComponent } from './components/home/crud-operations/menu/menu.component';
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
+import { FileUploadComponent } from './components/home/file-upload/file-upload.component';
 
 const httpInterceptor = [
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
@@ -37,6 +38,7 @@ const httpInterceptor = [
     CrudOperationsComponent,
     UsersComponent,
     MenuComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,

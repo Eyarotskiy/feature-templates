@@ -65,6 +65,10 @@ export interface AuthenticationResponse {
   newToken: string,
 }
 
+export interface FileUploadResponse {
+  url: string,
+}
+
 // Redux instances
 
 export interface ReduxState {
