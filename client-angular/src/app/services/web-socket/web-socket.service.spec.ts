@@ -3,14 +3,20 @@ import { TestBed } from '@angular/core/testing';
 import { WebSocketService } from 'src/app/services/web-socket/web-socket.service';
 
 describe('WebSocketService', () => {
-  let service: WebSocketService;
+  let webSocketService: WebSocketService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(WebSocketService);
+    webSocketService = TestBed.inject(WebSocketService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  describe('emit', () => {
+    it('should be created', () => {
+      spyOn(webSocketService.socket, 'emit');
+
+      webSocketService.emit('testEvent', {});
+
+      expect(webSocketService.socket.emit).toHaveBeenCalledWith('testEvent', {});
+    });
   });
 });

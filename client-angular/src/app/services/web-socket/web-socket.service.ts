@@ -13,7 +13,7 @@ export class WebSocketService {
     this.socket = io(WEBSOCKET_URI, {transports: ['websocket']});
   }
 
-  listen(eventName: string) {
+  listen(eventName: string): Observable<any> {
     return new Observable((subscriber: any) => {
       this.socket.on(eventName, (data: any) => {
         subscriber.next(data);
