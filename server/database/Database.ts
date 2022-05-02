@@ -33,8 +33,8 @@ class Database {
 
 	async updateDish(oldDishName: string, newDishName: string): Promise<Document|null> {
 		try {
-			const filter = {name: oldDishName};
-			const update = {$set: {name: newDishName}};
+			const filter: any = {name: oldDishName};
+			const update: any = {$set: {name: newDishName}};
 
 			return await this.menuModel.findOneAndUpdate(
 				filter, update, {new: true});
@@ -45,7 +45,7 @@ class Database {
 
 	async deleteDish(dishName: string): Promise<Document|null> {
 		try {
-			const filter = {name: dishName};
+			const filter: any = {name: dishName};
 
 			return await this.menuModel.findOneAndRemove(filter);
 		} catch (e) {
@@ -55,7 +55,7 @@ class Database {
 
 	async clearMenu(): Promise<any> {
 		try {
-			return await this.menuModel.deleteMany({});
+			return await this.menuModel.deleteMany({} as any);
 		} catch (e) {
 			throw new Error(e);
 		}
@@ -91,7 +91,7 @@ class Database {
 
 	async findUser(login: string): Promise<any> {
 		try {
-			return await this.usersModel.findOne({login});
+			return await this.usersModel.findOne({login} as any);
 		} catch (e) {
 			throw new Error(e);
 		}
@@ -99,8 +99,8 @@ class Database {
 
 	async confirmUser(login: string): Promise<any> {
 		try {
-			const filter = {login};
-			const update = {$set: {confirmed: true}};
+			const filter: any = {login};
+			const update: any = {$set: {confirmed: true}};
 
 			return await this.usersModel.findOneAndUpdate(
 				filter, update, {new: true});
