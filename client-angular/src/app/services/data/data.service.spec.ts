@@ -2,15 +2,26 @@ import { TestBed } from '@angular/core/testing';
 
 import { DataService } from './data.service';
 
-describe('DataStoreService', () => {
-  let service: DataService;
+describe('DataService', () => {
+  let dataService: DataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DataService);
+    dataService = TestBed.inject(DataService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  describe('setIsUserLoggedIn', () => {
+    it('should assign correct value to user login flag', () => {
+      let isUserLoggedIn = false;
+      dataService.isUserLoggedIn.subscribe((val: boolean) => isUserLoggedIn = val);
+
+      dataService.setIsUserLoggedIn(true);
+
+      expect(isUserLoggedIn).toBeTruthy();
+
+      dataService.setIsUserLoggedIn(false);
+
+      expect(isUserLoggedIn).toBeFalsy();
+    });
   });
 });
