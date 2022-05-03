@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
@@ -24,8 +23,6 @@ import { FileUploadComponent } from './components/home/file-upload/file-upload.c
 const httpInterceptor = [
   {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
 ];
-
-// const config: SocketIoConfig = {url: 'http://localhost:8000', options: {}};
 
 @NgModule({
   declarations: [
