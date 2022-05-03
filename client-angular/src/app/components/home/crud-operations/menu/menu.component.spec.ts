@@ -22,7 +22,7 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should render text content correctly', () => {
+  it('should render the correct text content', () => {
     component.menu = [{
       _id: TEST_ID,
       creation_date: new Date('10-12-2020'),
