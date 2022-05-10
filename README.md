@@ -1,19 +1,18 @@
 ## Description 
 
 The main idea of that project is to implement basic features and functionality which are used in different projects on a 
-daily basis, so that one can simply copy-paste necessary parts of the code to their project.     
+daily basis, so that one can simply copy-paste necessary parts of the code to their project. Important to note that the 
+client part is implemented on both Angular and React, so the application can be run using one or another technology.     
 
 ### Technologies / Frameworks
 
-  - Node.js + Express
-  - React + Redux
-  - Jest
-  - MongoDB + Mongoose
-  - Heroku
+  - **BE part:** Node.js + Express, Jest, MongoDB + Mongoose, Heroku
+  - **React part:** React + Redux, Jest + React testing library 
+  - **Angular part:** Angular, RxJS, Karma + Jasmine
   
 ### Implemented Features
 
-  - React routing
+  - Routing (Angular / React)
   - REST API and WebSocket 
   - File upload 
   - Authentication + Authorization (via Json Web Token)
