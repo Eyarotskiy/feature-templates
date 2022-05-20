@@ -1,6 +1,13 @@
-import {createStore} from 'redux';
-import rootReducer from 'redux/reducers/reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import loginReducer from 'redux/slices/loginSlice';
+import usersReducer from 'redux/slices/usersSlice';
 
-const store = createStore(rootReducer);
+export const store = configureStore({
+	reducer: {
+		login: loginReducer,
+		users: usersReducer,
+	},
+});
 
-export default store;
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;

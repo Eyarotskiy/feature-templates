@@ -4,9 +4,9 @@ import Menu from 'components/Home/CrudOperations/Menu/Menu';
 import Users from 'components/Home/CrudOperations/Users/Users';
 import WebSocket from 'Api/WebSocket';
 import Api from 'Api/Api';
-import {useDispatch, useSelector} from 'react-redux';
-import {setUsers} from 'redux/actions/actions';
-import {DishData, ReduxState} from 'common/types';
+import { selectUsers, setUsers } from 'redux/slices/usersSlice';
+import { DishData } from 'common/types';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
 
 function CrudOperations(): JSX.Element {
 	const [dishCreateName, setDishCreateName] = useState('');
@@ -14,28 +14,12 @@ function CrudOperations(): JSX.Element {
 	const [dishOldUpdateName, setDishOldUpdateName] = useState('');
 	const [dishNewUpdateName, setDishNewUpdateName] = useState('');
 	const [menu, setMenu] = useState([] as DishData[]);
-	const users = useSelector((state: ReduxState) => state.userReducer.users);
-	const dispatch = useDispatch();
+	const users = useAppSelector(selectUsers);
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		WebSocket.getMenu(setMenu)
 	}, []);
-
-	function handleDishCreateNameChange(e: React.ChangeEvent<HTMLInputElement>) {
-		setDishCreateName(e.target.value);
-	}
-
-	function handleDishDeleteNameChange(e: React.ChangeEvent<HTMLInputElement>) {
-		setDishDeleteName(e.target.value);
-	}
-
-	function handleDishOldUpdateNameChange(e: React.ChangeEvent<HTMLInputElement>) {
-		setDishOldUpdateName(e.target.value);
-	}
-
-	function handleDishNewUpdateNameChange(e: React.ChangeEvent<HTMLInputElement>) {
-		setDishNewUpdateName(e.target.value);
-	}
 
 	function clearMenu() {
 		WebSocket.clearMenu();
@@ -96,7 +80,8 @@ function CrudOperations(): JSX.Element {
 								placeholder="Dish name"
 								type="text"
 								value={dishCreateName}
-								onChange={handleDishCreateNameChange} />
+								onChange={(e) => setDishCreateName(e.target.value)}
+							/>
 							<button className="button button-blue" onClick={saveDish}>
 								Save dish
 							</button>
@@ -107,7 +92,8 @@ function CrudOperations(): JSX.Element {
 								placeholder="Dish name"
 								type="text"
 								value={dishDeleteName}
-								onChange={handleDishDeleteNameChange} />
+								onChange={(e) => setDishDeleteName(e.target.value)}
+							/>
 							<button className="button button-blue" onClick={deleteDish}>
 								Delete dish
 							</button>
@@ -118,13 +104,15 @@ function CrudOperations(): JSX.Element {
 								placeholder="Dish name"
 								type="text"
 								value={dishOldUpdateName}
-								onChange={handleDishOldUpdateNameChange} />
+								onChange={(e) => setDishOldUpdateName(e.target.value)}
+							/>
 							<input
 								className="form-input"
 								placeholder="New dish name"
 								type="text"
 								value={dishNewUpdateName}
-								onChange={handleDishNewUpdateNameChange} />
+								onChange={(e) => setDishNewUpdateName(e.target.value)}
+							/>
 							<button className="button button-blue" onClick={updateDish}>
 								Update dish
 							</button>

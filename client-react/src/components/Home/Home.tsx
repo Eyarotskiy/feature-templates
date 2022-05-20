@@ -4,11 +4,11 @@ import CrudOperations from 'components/Home/CrudOperations/CrudOperations';
 import FileUpload from 'components/Home/FileUpload/FileUpload';
 import Analytics from 'components/Home/Analytics/Analytics';
 import Login from 'components/Home/Login/Login';
-import {useSelector} from 'react-redux';
-import {ReduxState} from 'common/types';
+import { useAppSelector } from 'redux/hooks';
+import { selectIsLoggedInFlag } from 'redux/slices/loginSlice';
 
 function Home(): JSX.Element {
-	const isLoggedIn = useSelector((state: ReduxState) => state.loginReducer.isLoggedIn);
+	const isLoggedIn = useAppSelector(selectIsLoggedInFlag);
 
 	return (
 		<div className="Home">

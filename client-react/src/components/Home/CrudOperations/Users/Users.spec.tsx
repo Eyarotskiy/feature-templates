@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
-import {UserData} from 'common/types';
+import { render, screen, waitFor } from '@testing-library/react';
+import { UserData } from 'common/types';
 import Users from './Users';
 
 describe('Users component', () => {

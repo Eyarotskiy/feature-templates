@@ -1,9 +1,8 @@
-import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import 'components/Home/Login/Login.scss';
 import Api from 'Api/Api';
-import {useDispatch, useSelector} from 'react-redux';
-import {setLoginFlag} from 'redux/actions/actions';
-import {ReduxState} from 'common/types';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { selectIsLoggedInFlag, setIsLoggedInFlag } from 'redux/slices/loginSlice';
 
 function Login(): JSX.Element {
 	const [users, setUsers] = useState([] as string[]);
@@ -15,8 +14,8 @@ function Login(): JSX.Element {
 	const [login, setLogin] = useState('test@test.com');
 	const [isLoading, setIsLoading] = useState(true);
 	const [password, setPassword] = useState('1');
-	const isLoggedIn = useSelector((state: ReduxState) => state.loginReducer.isLoggedIn);
-	const dispatch = useDispatch();
+	const isLoggedIn = useAppSelector(selectIsLoggedInFlag);
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		async function loadData() {
@@ -35,10 +34,6 @@ function Login(): JSX.Element {
 	function handleLoginChange(e: ChangeEvent<HTMLInputElement>) {
 		setLogin(e.target.value);
 		resetFlags();
-	}
-
-	function handlePasswordChange(e: ChangeEvent<HTMLInputElement>) {
-		setPassword(e.target.value);
 	}
 
 	async function sendSignUpRequest(e: FormEvent<HTMLButtonElement>) {
@@ -68,7 +63,7 @@ function Login(): JSX.Element {
 
 			Api.setAuthHeader(response.data.token);
 			localStorage.setItem('token', response.data.token);
-			dispatch(setLoginFlag(true));
+			dispatch(setIsLoggedInFlag(true));
 		} catch (e) {
 			const loginError = e?.response?.status === 404;
 			const confirmationError = e?.response?.status === 403;
@@ -82,13 +77,13 @@ function Login(): JSX.Element {
 	async function logOutUser(e: FormEvent<HTMLButtonElement>) {
 		e.preventDefault();
 		localStorage.removeItem('token');
-		dispatch(setLoginFlag(false));
+		dispatch(setIsLoggedInFlag(false));
 	}
 
 	async function sendAuthenticationRequest(token: string) {
 		try {
 			const response = await Api.authenticateUser(token);
-			dispatch(setLoginFlag(true));
+			dispatch(setIsLoggedInFlag(true));
 			setLogin(response.data.login);
 			localStorage.setItem('token', response.data.newToken);
 			Api.setAuthHeader(response.data.newToken);
@@ -114,7 +109,8 @@ function Login(): JSX.Element {
 						Login status:
 						<span
 							className={isLoggedIn ? "status success" : "status warning"}
-							data-testid="login-status">
+							data-testid="login-status"
+						>
 							logged {isLoggedIn ? 'in' : 'out'}
 						</span>
 					</h3>
@@ -130,7 +126,8 @@ function Login(): JSX.Element {
 												placeholder="Login"
 												type="text"
 												value={login}
-												onChange={handleLoginChange}/>
+												onChange={handleLoginChange}
+											/>
 											{
 												registrationUserExistsError &&
 												<span className="validation-msg">
@@ -156,7 +153,8 @@ function Login(): JSX.Element {
 												placeholder="Password"
 												type="password"
 												value={password}
-												onChange={handlePasswordChange}/>
+												onChange={(e) => setPassword(e.target.value)}
+											/>
 											{
 												!incorrectPasswordError &&
 												<span className="validation-msg">
@@ -178,7 +176,8 @@ function Login(): JSX.Element {
 										<button
 											className="button button-blue"
 											data-testid="sign-in-button"
-											onClick={sendSignInRequest}>
+											onClick={sendSignInRequest}
+										>
 											Sign in
 										</button>
 									</div>
@@ -209,7 +208,8 @@ function Login(): JSX.Element {
 									<button
 										className="button button-blue"
 										data-testid="log-out-button"
-										onClick={logOutUser}>
+										onClick={logOutUser}
+									>
 										Log out
 									</button>
 								</div>

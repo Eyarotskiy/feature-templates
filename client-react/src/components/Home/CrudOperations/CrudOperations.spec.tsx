@@ -1,19 +1,15 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import rootReducer from '../../../redux/reducers/reducers';
+import { render, screen, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import CrudOperations from './CrudOperations';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
-import {DishData, UserData} from 'common/types';
+import { DishData, UserData } from 'common/types';
 import WebSocket from '../../../Api/WebSocket';
+import { store } from 'redux/store';
 
-function renderWithRedux(
-	component: JSX.Element,
-	{initialState, store = createStore(rootReducer, initialState)} = {} as any,
-) {
+function renderWithRedux(component: JSX.Element) {
 	return {
 		...render(<Provider store={store}>{component}</Provider>),
 		store,
@@ -55,7 +51,7 @@ describe('CrudOperations component', () => {
 		WebSocket.getMenu = jest.fn() as any;
 		WebSocket.clearMenu = jest.fn() as any;
 		WebSocket.socket.emit = jest.fn() as any;
-		await waitFor(() => renderWithRedux(<CrudOperations />));
+		await waitFor(() => render(<Provider store={store}><CrudOperations /></Provider>));
 	});
 
 	describe('useEffect', () => {

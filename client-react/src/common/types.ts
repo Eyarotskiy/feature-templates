@@ -52,15 +52,10 @@ export interface AuthenticationResponse {
 
 // Redux instances
 
-export interface ReduxState {
-	loginReducer: LoginReducer,
-	userReducer: UserReducer,
+export interface UsersState {
+	value: UserData[],
 }
 
-export interface UserReducer {
-	users: UserData[],
-}
-
-export interface LoginReducer {
-	isLoggedIn: boolean,
+export interface LoginState {
+	value: boolean,
 }

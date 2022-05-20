@@ -12,7 +12,8 @@ function About(props: RouteComponentProps): JSX.Element {
 			<Link
 				to={`${props.match.path}/about-inner/15`}
 				className="nav-link"
-				data-testid="about-inner-link">
+				data-testid="about-inner-link"
+			>
 				Inner page
 			</Link>
 

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import 'components/Home/Analytics/Analytics.scss';
-import {initGoogleAnalytics, trackEvent, trackPageView} from 'common/utils';
+import { initGoogleAnalytics, trackEvent, trackPageView } from 'common/utils';
 
 function Analytics(): JSX.Element {
 	useEffect(() => {

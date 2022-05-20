@@ -1,7 +1,7 @@
 import React from 'react';
 import 'components/Home/CrudOperations/Menu/Menu.scss';
-import {formatDate} from 'common/utils';
-import {DishData, MenuProps} from 'common/types';
+import { formatDate } from 'common/utils';
+import { DishData, MenuProps } from 'common/types';
 
 function Menu(props: MenuProps): JSX.Element {
 	return (

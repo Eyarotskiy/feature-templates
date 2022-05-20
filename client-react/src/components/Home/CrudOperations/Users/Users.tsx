@@ -1,6 +1,6 @@
 import React from 'react';
 import 'components/Home/CrudOperations/Menu/Menu.scss';
-import {UserData, UsersProps} from 'common/types';
+import { UserData, UsersProps } from 'common/types';
 
 function Users(props: UsersProps): JSX.Element {
 	return (

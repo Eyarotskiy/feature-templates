@@ -1,5 +1,5 @@
 import ReactGA from 'react-ga';
-import {EnvironmentUrl, GOOGLE_ANALYTICS_ID} from './constants';
+import { EnvironmentUrl, GOOGLE_ANALYTICS_ID } from './constants';
 
 /**
  * Returns formatted date readable on UI, example:

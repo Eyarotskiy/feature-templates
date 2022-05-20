@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import 'components/Home/FileUpload/FileUpload.scss';
 
@@ -40,13 +40,15 @@ function FileUpload(): JSX.Element {
 					data-testid="upload-input"
 					style={{display: 'none'}}
 					type="file"
-					onChange={handleFileUpload} />
+					onChange={handleFileUpload}
+				/>
 				{
 					fileName.length > 0 &&
 					<button
 						data-testid="upload-button"
 						className="button button-blue"
-						onClick={uploadFile}>
+						onClick={uploadFile}
+					>
 						Upload file to server
 					</button>
 				}
@@ -56,7 +58,8 @@ function FileUpload(): JSX.Element {
 						alt="uploaded"
 						className="uploaded-image"
 						data-testid="uploaded-image"
-						src={imageUrl} />
+						src={imageUrl}
+					/>
 				}
 			</form>
 		</div>

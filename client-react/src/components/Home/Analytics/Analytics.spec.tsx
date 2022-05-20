@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import ReactGA from 'react-ga';
 import React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Analytics from './Analytics';
 import userEvent from '@testing-library/user-event';
 

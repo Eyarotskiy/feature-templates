@@ -1,15 +1,15 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import {createMemoryHistory} from 'history';
+import { createMemoryHistory } from 'history';
 import App from './App';
-import {createStore} from 'redux';
-import rootReducer from '../../redux/reducers/reducers';
-import {Provider} from 'react-redux';
-import {UsersResponse} from '../../common/types';
+import { Provider } from 'react-redux';
 import axios from 'axios';
-import {Router} from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import userEvent from '@testing-library/user-event/dist';
+import { store } from 'redux/store';
+import Home from 'components/Home/Home';
+import { UsersResponse } from 'common/types';
 
 describe('App component', () => {
 	const TEST_USER_NAME = 'test@test.com';
@@ -18,25 +18,16 @@ describe('App component', () => {
 	const {getByText, getByTestId} = screen;
 	const axiosMock = axios as jest.Mocked<typeof axios>;
 
-	function renderWithRedux(
-		component: JSX.Element,
-		{initialState, store = createStore(rootReducer, initialState)} = {} as any,
-	) {
-		const history = createMemoryHistory();
-
-		return {
-			...render(
-				<Provider store={store}>
-					<Router history={history}>{component}</Router>
-				</Provider>
-			),
-			store,
-		}
-	}
-
 	beforeEach(async () => {
 		axiosMock.get.mockResolvedValueOnce({data: TEST_USER_RESPONSE});
-		await waitFor(() => renderWithRedux(<App />));
+		await waitFor(() => {
+			const history = createMemoryHistory();
+
+			return render(
+				<Provider store={store}>
+					<Router history={history}><App /></Router>
+				</Provider>);
+		});
 	});
 
 	it('should render initial text content', async () => {

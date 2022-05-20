@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Menu from './Menu';
-import {DishData} from 'common/types';
+import { DishData } from 'common/types';
 
 describe('Menu component', () => {
 	const TEST_ID_1 = '5';

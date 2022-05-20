@@ -2,12 +2,11 @@ import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import Login from './Login';
-import {createStore} from 'redux';
-import rootReducer from '../../../redux/reducers/reducers';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import axios from 'axios';
-import {UsersResponse} from 'common/types';
+import { UsersResponse } from 'common/types';
 import userEvent from '@testing-library/user-event/dist';
+import { store } from 'redux/store';
 
 describe('Login component', () => {
 	const TEST_USER_NAME = 'test@test.com';
@@ -15,16 +14,6 @@ describe('Login component', () => {
 
 	const {getByTestId, getByText} = screen;
 	const axiosMock = axios as jest.Mocked<typeof axios>;
-
-	function renderWithRedux(
-		component: JSX.Element,
-		{initialState, store = createStore(rootReducer, initialState)} = {} as any,
-	) {
-		return {
-			...render(<Provider store={store}>{component}</Provider>),
-			store,
-		}
-	}
 
 	async function runSignInSteps() {
 		const loginInput = getByTestId('login-input');
@@ -41,7 +30,7 @@ describe('Login component', () => {
 	beforeEach(async () => {
 		axiosMock.get.mockResolvedValueOnce({data: TEST_USER_RESPONSE});
 		axiosMock.defaults = {headers: {common: {'auth-token': ''}}};
-		await waitFor(() => renderWithRedux(<Login />));
+		await waitFor(() => render(<Provider store={store}><Login /></Provider>));
 	});
 
 	it('should render initial text content', () => {
