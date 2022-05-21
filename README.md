@@ -7,7 +7,7 @@ client part is implemented on both Angular and React, so the application can be 
 ### Technologies / Frameworks
 
   - **BE part:** Node.js + Express, Jest, MongoDB + Mongoose, Heroku
-  - **React part:** React + Redux, Jest + React testing library 
+  - **React part:** React + redux-toolkit, Jest + React testing library 
   - **Angular part:** Angular, RxJS, Karma + Jasmine
   
 ### Implemented Features
