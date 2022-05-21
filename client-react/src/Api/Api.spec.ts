@@ -7,7 +7,7 @@ import {
 	SignInResponse,
 	UserData,
 	UsersResponse
-} from '../common/types';
+} from 'common/types';
 
 describe('Api', () => {
 	const axiosMock = axios as jest.Mocked<typeof axios>;
@@ -155,7 +155,7 @@ describe('Api', () => {
 						'auth-token': '',
 					},
 				},
-			};
+			} as any;
 
 			Api.setAuthHeader(TEST_TOKEN);
 

@@ -6,10 +6,10 @@ import App from './App';
 import { Provider } from 'react-redux';
 import axios from 'axios';
 import { Router } from 'react-router-dom'
-import userEvent from '@testing-library/user-event/dist';
 import { store } from 'redux/store';
 import Home from 'components/Home/Home';
 import { UsersResponse } from 'common/types';
+import userEvent from '@testing-library/user-event';
 
 describe('App component', () => {
 	const TEST_USER_NAME = 'test@test.com';

@@ -67,12 +67,16 @@ function Login(): JSX.Element {
 			localStorage.setItem('token', response.data.token);
 			dispatch(setIsLoggedInFlag(true));
 		} catch (e) {
-			const loginError = e?.response?.status === 404;
-			const confirmationError = e?.response?.status === 403;
-			const passwordError = e?.response?.status === 401;
-			setLoginUserExistsError(!loginError);
-			setEmailConfirmationError(!confirmationError);
-			setIncorrectPasswordError(!passwordError);
+			if (e instanceof Error) {
+				console.error(e.stack);
+			} else {
+				const loginError = e?.response?.status === 404;
+				const confirmationError = e?.response?.status === 403;
+				const passwordError = e?.response?.status === 401;
+				setLoginUserExistsError(!loginError);
+				setEmailConfirmationError(!confirmationError);
+				setIncorrectPasswordError(!passwordError);
+			}
 		}
 	}
 

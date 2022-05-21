@@ -3,18 +3,11 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import CrudOperations from './CrudOperations';
-import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 import { DishData, UserData } from 'common/types';
 import WebSocket from '../../../Api/WebSocket';
 import { store } from 'redux/store';
-
-function renderWithRedux(component: JSX.Element) {
-	return {
-		...render(<Provider store={store}>{component}</Provider>),
-		store,
-	}
-}
+import userEvent from '@testing-library/user-event';
 
 describe('CrudOperations component', () => {
 	const TEST_USER_ID = '1';

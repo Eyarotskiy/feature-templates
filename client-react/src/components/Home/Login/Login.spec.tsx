@@ -5,8 +5,8 @@ import Login from './Login';
 import { Provider } from 'react-redux';
 import axios from 'axios';
 import { UsersResponse } from 'common/types';
-import userEvent from '@testing-library/user-event/dist';
 import { store } from 'redux/store';
+import userEvent from '@testing-library/user-event';
 
 describe('Login component', () => {
 	const TEST_USER_NAME = 'test@test.com';
@@ -29,7 +29,7 @@ describe('Login component', () => {
 
 	beforeEach(async () => {
 		axiosMock.get.mockResolvedValueOnce({data: TEST_USER_RESPONSE});
-		axiosMock.defaults = {headers: {common: {'auth-token': ''}}};
+		axiosMock.defaults = {headers: {common: {'auth-token': ''}}} as any;
 		await waitFor(() => render(<Provider store={store}><Login /></Provider>));
 	});
 
