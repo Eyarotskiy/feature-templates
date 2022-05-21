@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import 'components/Home/FileUpload/FileUpload.scss';
+import styles from 'components/Home/FileUpload/FileUpload.module.scss';
+import appStyles from 'components/App/App.module.scss';
+import classNames from 'classnames';
 
 function FileUpload(): JSX.Element {
 	const [file, setFile] = useState<File>();
@@ -28,13 +30,13 @@ function FileUpload(): JSX.Element {
 	}
 
 	return (
-		<div className="FileUpload">
-			<h2 className="title">File Upload</h2>
-			<form className="form">
-				<label htmlFor="upload-input" className="button button-blue">
+		<div className={styles.FileUpload}>
+			<h2 className={appStyles.title}>File Upload</h2>
+			<form className={styles.form}>
+				<label htmlFor="upload-input" className={classNames(appStyles.button, appStyles['button-blue'])}>
 					Select file to upload
 				</label>
-				<h4 className="file-name">{fileName}</h4>
+				<h4 className={styles['file-name']}>{fileName}</h4>
 				<input
 					id="upload-input"
 					data-testid="upload-input"
@@ -46,7 +48,7 @@ function FileUpload(): JSX.Element {
 					fileName.length > 0 &&
 					<button
 						data-testid="upload-button"
-						className="button button-blue"
+						className={classNames(appStyles.button, appStyles['button-blue'])}
 						onClick={uploadFile}
 					>
 						Upload file to server
@@ -56,7 +58,7 @@ function FileUpload(): JSX.Element {
 					imageUrl.length > 0 &&
 					<img
 						alt="uploaded"
-						className="uploaded-image"
+						className={styles.uploadedImage}
 						data-testid="uploaded-image"
 						src={imageUrl}
 					/>

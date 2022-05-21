@@ -1,0 +1,96 @@
+@import "../../../common/variables";
+
+.info {
+  color: $color-white;
+  text-align: center;
+  text-shadow: $text-shadow;
+}
+
+.status {
+  margin-left: 5px;
+  padding: 5px 10px;
+
+  &.success {
+    background-color: $bg-success;
+  }
+
+  &.warning {
+    background-color: $bg-warning;
+  }
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto;
+  max-width: 300px;
+
+  input {
+    display: block;
+    margin: 5px 0;
+    padding: 5px;
+    width: 100%;
+  }
+}
+
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.validation-msg {
+  color: $color-red;
+  display: block;
+  font-weight: 700;
+  padding-top: 5px;
+  text-align: center;
+  text-shadow: $text-shadow;
+  width: 100%;
+}
+
+.welcome-message {
+  color: $color-white;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: $text-shadow;
+
+  strong {
+    color: $color-blue;
+  }
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .button {
+    margin: 0 10px;
+  }
+}
+
+.users-list {
+  color: $color-white;
+  margin-bottom: 15px;
+  text-align: center;
+  text-shadow: $text-shadow;
+
+  strong {
+    color: $color-blue;
+  }
+}
+
+.users-title {
+  margin-bottom: 5px;
+  text-shadow: $text-shadow;
+}
+
+.users-name {
+  color: $color-blue;
+  font-weight: 700;
+}
+
+.users-row {
+  font-weight: 700;
+}

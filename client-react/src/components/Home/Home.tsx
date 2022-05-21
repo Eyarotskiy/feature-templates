@@ -1,5 +1,5 @@
 import React from 'react';
-import 'components/Home/Home.scss';
+import appStyles from 'components/App/App.module.scss';
 import CrudOperations from 'components/Home/CrudOperations/CrudOperations';
 import FileUpload from 'components/Home/FileUpload/FileUpload';
 import Analytics from 'components/Home/Analytics/Analytics';
@@ -11,20 +11,20 @@ function Home(): JSX.Element {
 	const isLoggedIn = useAppSelector(selectIsLoggedInFlag);
 
 	return (
-		<div className="Home">
+		<>
 			<Login />
 			{
 				isLoggedIn &&
 				<>
-					<div className="divider"></div>
+					<div className={appStyles.divider}></div>
 					<CrudOperations />
-					<div className="divider"></div>
+					<div className={appStyles.divider}></div>
 					<FileUpload />
-					<div className="divider"></div>
+					<div className={appStyles.divider}></div>
 					<Analytics />
 				</>
 			}
-		</div>
+		</>
 	);
 }
 

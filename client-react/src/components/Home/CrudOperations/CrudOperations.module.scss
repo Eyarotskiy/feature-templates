@@ -1,0 +1,81 @@
+@import "../../../common/variables";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.container-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+
+.form-wrapper-single {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.form-wrapper {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  margin-top: 25px;
+}
+
+.form-container {
+  text-align: center;
+}
+
+.form-input {
+  border: 2px solid transparent;
+  display: block;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  width: 250px;
+}
+
+.form-input:focus {
+  border: 2px solid $border-grey;
+  outline: none;
+}
+
+.table {
+  width: 100%;
+}
+
+.item {
+  color: $color-white;
+  display: flex;
+}
+
+.table {
+  background-color: $bg-grey;
+  border-collapse: collapse;
+  margin: 20px auto 0;
+}
+
+.table th {
+  border-bottom: 1px solid $border-dark-grey;
+  padding: 10px;
+}
+
+.table th,
+.table td {
+  border-right: 1px solid $border-dark-grey;
+}
+
+.table td {
+  padding: 5px 10px;
+}
+
+.table tr:last-child td {
+  padding-bottom: 10px;
+}
+
+.table tbody > tr {
+  background-color: $bg-white;
+}

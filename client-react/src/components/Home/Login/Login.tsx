@@ -1,8 +1,10 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import 'components/Home/Login/Login.scss';
+import appStyles from 'components/App/App.module.scss';
+import styles from 'components/Home/Login/Login.module.scss';
 import Api from 'Api/Api';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { selectIsLoggedInFlag, setIsLoggedInFlag } from 'redux/slices/loginSlice';
+import classNames from 'classnames';
 
 function Login(): JSX.Element {
 	const [users, setUsers] = useState([] as string[]);
@@ -100,27 +102,27 @@ function Login(): JSX.Element {
 	}
 
 	return (
-		<div className="Login">
-			<h2 className="title">Login (Json Web Token)</h2>
+		<div>
+			<h2 className={appStyles.title}>Login (Json Web Token)</h2>
 			{
 				!isLoading &&
 				<>
-					<h3 className="info">
+					<h3 className={styles.info}>
 						Login status:
 						<span
-							className={isLoggedIn ? "status success" : "status warning"}
+							className={classNames(styles.status, {[`${styles.success}`]: isLoggedIn}, {[`${styles.warning}`]: !isLoggedIn})}
 							data-testid="login-status"
 						>
 							logged {isLoggedIn ? 'in' : 'out'}
 						</span>
 					</h3>
-					<form className="form">
+					<form>
 						{
 							!isLoggedIn &&
 							<>
 								<div>
-									<div className="login-container">
-										<div className="input-container">
+									<div className={styles['login-container']}>
+										<div className={styles['input-container']}>
 											<input
 												data-testid="login-input"
 												placeholder="Login"
@@ -130,24 +132,24 @@ function Login(): JSX.Element {
 											/>
 											{
 												registrationUserExistsError &&
-												<span className="validation-msg">
+												<span className={styles['validation-msg']}>
 													User already exists
 												</span>
 											}
 											{
 												!loginUserExistsError &&
-												<span className="validation-msg">
+												<span className={styles['validation-msg']}>
 													Such user doesn't exist
 												</span>
 											}
 											{
 												!emailConfirmationError &&
-												<span className="validation-msg">
+												<span className={styles['validation-msg']}>
 													Email is not confirmed
 												</span>
 											}
 										</div>
-										<div className="input-container">
+										<div className={styles['input-container']}>
 											<input
 												data-testid="password-input"
 												placeholder="Password"
@@ -157,24 +159,27 @@ function Login(): JSX.Element {
 											/>
 											{
 												!incorrectPasswordError &&
-												<span className="validation-msg">
+												<span className={styles['validation-msg']}>
 													Password is not correct
 												</span>
 											}
 											{
 												commonError &&
-												<span className="validation-msg">
+												<span className={styles['validation-msg']}>
 													Error upon user sign up
 												</span>
 											}
 										</div>
 									</div>
-									<div className="button-container">
-										<button className="button button-blue" onClick={sendSignUpRequest}>
+									<div className={styles['button-container']}>
+										<button
+											className={classNames(appStyles.button, appStyles['button-blue'])}
+											onClick={sendSignUpRequest}
+										>
 											Sign Up (Add user)
 										</button>
 										<button
-											className="button button-blue"
+											className={classNames(appStyles.button, appStyles['button-blue'])}
 											data-testid="sign-in-button"
 											onClick={sendSignInRequest}
 										>
@@ -182,16 +187,16 @@ function Login(): JSX.Element {
 										</button>
 									</div>
 								</div>
-								<div className="users-list">
-									<h3 className="users-title">Test account:</h3>
-									<div className="users-row"><strong>Login:&nbsp;</strong>test@test.com</div>
-									<div className="users-row"><strong>Password:&nbsp;</strong>1</div>
+								<div className={styles['users-list']}>
+									<h3 className={styles['users-title']}>Test account:</h3>
+									<div className={styles['users-row']}><strong>Login:&nbsp;</strong>test@test.com</div>
+									<div className={styles['users-row']}><strong>Password:&nbsp;</strong>1</div>
 									{
 										users?.length &&
-										<h3 className="users-title">Registered users:</h3>
+										<h3 className={styles['users-title']}>Registered users:</h3>
 									}
 									{users?.map((user, index) => (
-										<span key={index} className="users-name" data-testid="user-list">
+										<span key={index} className={styles['users-name']} data-testid="user-list">
 											{user}{index !== users.length - 1 && ', '}
 										</span>
 									))}
@@ -201,12 +206,12 @@ function Login(): JSX.Element {
 						{
 							isLoggedIn &&
 							<div>
-								<h4 className="welcome-message" data-testid="welcome-message">
+								<h4 className={styles['welcome-message']} data-testid="welcome-message">
 									Welcome, <strong>{login}</strong>
 								</h4>
-								<div className="button-container">
+								<div className={styles['button-container']}>
 									<button
-										className="button button-blue"
+										className={classNames(appStyles.button, appStyles['button-blue'])}
 										data-testid="log-out-button"
 										onClick={logOutUser}
 									>

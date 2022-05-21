@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
-import 'components/About/AboutInner/AboutInner.scss';
+import appStyles from 'components/App/App.module.scss';
 
 type RouteProps = {
 	id?: string,
@@ -8,9 +8,9 @@ type RouteProps = {
 
 function AboutInner(props: RouteComponentProps<RouteProps>): JSX.Element {
 	return (
-		<div className="AboutInner">
-			<h2 className="title">AboutInner Component</h2>
-			<p className="text">ID: {props.match.params.id}</p>
+		<div>
+			<h2 className={appStyles.title}>AboutInner Component</h2>
+			<p className={appStyles.text}>ID: {props.match.params.id}</p>
 		</div>
 	);
 }

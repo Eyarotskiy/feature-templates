@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import 'components/Confirmation/Confirmation.scss';
+import appStyles from 'components/App/App.module.scss';
+import styles from 'components/Confirmation/Confirmation.module.scss';
 import Api from 'Api/Api';
+import classNames from 'classnames';
 
 function Confirmation(): JSX.Element {
 	const [statusFlag, setStatusFlag] = useState(false);
@@ -28,9 +30,9 @@ function Confirmation(): JSX.Element {
 	}
 
 	return (
-		<div className="Confirmation">
-			<h2 className="title">Confirmation Component</h2>
-			<p className={`status-msg ${statusFlag ? 'success' : 'error'}`}>
+		<div className={styles.Confirmation}>
+			<h2 className={styles.link}>Confirmation Component</h2>
+			<p className={classNames(styles['status-msg'], {[`${styles.error}`]: !statusFlag})}>
 				{
 					statusFlag ?
 					'Your email has been confirmed successfully' :
@@ -40,7 +42,8 @@ function Confirmation(): JSX.Element {
 			</p>
 			{
 				statusFlag &&
-				<a href="/" className="link button button-blue">
+
+				<a href="/" className={classNames(styles.link, appStyles.button, appStyles['button-blue'])}>
 					Go to main page
 				</a>
 			}
