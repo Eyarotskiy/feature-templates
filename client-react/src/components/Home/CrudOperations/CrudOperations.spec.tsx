@@ -66,7 +66,7 @@ describe('CrudOperations component', () => {
 			axiosMock.get.mockResolvedValueOnce({data: TEST_USER_RESPONSE});
 			const usersButton = getByText(/^Get users/i);
 
-			userEvent.click(usersButton);
+			await userEvent.click(usersButton);
 
 			await runTest('user-id', [TEST_USER_ID]);
 			await runTest('user-name', [TEST_USER_NAME]);
@@ -80,7 +80,7 @@ describe('CrudOperations component', () => {
 			axiosMock.get.mockResolvedValueOnce({data: TEST_DISH_RESPONSE});
 			const menuButton = getByText(/^Get menu/i);
 
-			userEvent.click(menuButton);
+			await userEvent.click(menuButton);
 
 			await runTest('dish-id', [TEST_DISH_ID]);
 			await runTest('dish-date', ['01-01-2001 00:00']);
@@ -89,10 +89,10 @@ describe('CrudOperations component', () => {
 	});
 
 	describe('clearMenu', () => {
-		it('should trigger clear menu request', () => {
+		it('should trigger clear menu request', async () => {
 			const clearButton = getByText(/^Clear menu/i);
 
-			userEvent.click(clearButton);
+			await userEvent.click(clearButton);
 
 			expect(WebSocket.clearMenu).toHaveBeenCalled();
 		});

@@ -31,7 +31,7 @@ function Confirmation(): JSX.Element {
 
 	return (
 		<div className={styles.Confirmation}>
-			<h2 className={styles.link}>Confirmation Component</h2>
+			<h2 className={appStyles.title}>Confirmation Component</h2>
 			<p className={classNames(styles['status-msg'], {[`${styles.error}`]: !statusFlag})}>
 				{
 					statusFlag ?

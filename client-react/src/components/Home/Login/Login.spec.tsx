@@ -20,11 +20,9 @@ describe('Login component', () => {
 		const passwordInput = getByTestId('password-input');
 		const signInButton = getByTestId('sign-in-button');
 
-		await waitFor(() => {
-			userEvent.type(loginInput, TEST_USER_NAME);
-			userEvent.type(passwordInput, '1');
-			userEvent.click(signInButton);
-		});
+		await userEvent.type(loginInput, TEST_USER_NAME);
+		await userEvent.type(passwordInput, '1');
+		await userEvent.click(signInButton);
 	}
 
 	beforeEach(async () => {
@@ -54,7 +52,7 @@ describe('Login component', () => {
 		axiosMock.post.mockResolvedValueOnce({data: {token: 'testToken'}});
 
 		await runSignInSteps();
-		
+
 		const loginStatus = getByTestId('login-status');
 		const welcomeMessage = getByTestId('welcome-message');
 

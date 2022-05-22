@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import FileUpload from './FileUpload';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
@@ -9,8 +9,8 @@ describe('FileUpload component', () => {
 	const { getByTestId, getByText, queryByTestId } = screen;
 	const axiosMock = axios as jest.Mocked<typeof axios>;
 
-	beforeEach(async () => {
-		await waitFor(() => render(<FileUpload />));
+	beforeEach(() => {
+		render(<FileUpload />);
 	});
 
 	it('should render initial text content', () => {
@@ -35,12 +35,9 @@ describe('FileUpload component', () => {
 		expect(uploadButton).toBeInTheDocument();
 
 		await userEvent.click(uploadButton);
+		const uploadedImage = getByTestId('uploaded-image');
 
-		await waitFor(() => {
-			const uploadedImage = getByTestId('uploaded-image');
-
-			expect(uploadedImage).toBeInTheDocument();
-			expect(uploadedImage).toHaveAttribute('src', TEST_URL);
-		});
+		expect(uploadedImage).toBeInTheDocument();
+		expect(uploadedImage).toHaveAttribute('src', TEST_URL);
 	});
 });

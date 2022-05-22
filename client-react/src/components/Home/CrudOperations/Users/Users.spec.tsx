@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { UserData } from 'common/types';
 import Users from './Users';
 
@@ -31,14 +31,12 @@ describe('Users component', () => {
 
 	const { getAllByTestId } = screen;
 
-	beforeEach(async () => {
-		await waitFor(() => render(<Users users={userProps} />));
-	});
-
 	it('should render text content passed in props', () => {
 		function getElements(selector: string): (string|null)[] {
 			return getAllByTestId(selector).map((item) => item.textContent)
 		}
+
+		render(<Users users={userProps} />);
 
 		expect(getElements('user-id'))
 			.toEqual([TEST_ID_1, TEST_ID_2]);

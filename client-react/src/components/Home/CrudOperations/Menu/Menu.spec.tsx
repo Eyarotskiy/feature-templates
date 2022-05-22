@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Menu from './Menu';
 import { DishData } from 'common/types';
 
@@ -25,14 +25,12 @@ describe('Menu component', () => {
 
 	const { getAllByTestId } = screen;
 
-	beforeEach(async () => {
-		await waitFor(() => render(<Menu menu={menuProps} />));
-	});
-
 	it('should render text content passed in props', () => {
 		function getElements(selector: string): (string|null)[] {
 			return getAllByTestId(selector).map((item) => item.textContent)
 		}
+
+		render(<Menu menu={menuProps} />);
 
 		expect(getElements('dish-id'))
 			.toEqual([TEST_ID_1, TEST_ID_2]);
