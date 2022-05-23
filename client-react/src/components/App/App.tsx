@@ -1,26 +1,21 @@
 import React from 'react';
-import { Link, Navigate, useRoutes } from 'react-router-dom';
+import { Link, useRoutes } from 'react-router-dom';
 import appStyle from 'components/App/App.module.scss';
 import Home from 'components/Home/Home';
 import About from 'components/About/About';
-import NotFound from 'components/NotFound/NotFound';
 import Confirmation from 'components/Confirmation/Confirmation';
 import classNames from 'classnames';
 import AboutInner from 'components/About/AboutInner/AboutInner';
+import NotFound from 'components/NotFound/NotFound';
 
 function App(): JSX.Element {
   const mainRoutes = {
     path: '/',
-    element: <Home />,
     children: [
-      {path: '*', element: <Navigate to='/404' />},
+      // {path: '*', element: <Navigate to='/404' />},
+      {path: '*', element: <NotFound />},
       {path: '/', element: <Home />},
     ],
-  };
-
-  const notFoundRoutes = {
-    path: '404',
-    element: <NotFound />,
   };
 
   const confirmationRoutes = {
@@ -36,17 +31,10 @@ function App(): JSX.Element {
     ],
   };
 
-  const aboutInnerRoutes = {
-    path: 'about-inner',
-    element: <AboutInner />,
-  };
-
   const routing = useRoutes([
     mainRoutes,
     confirmationRoutes,
     aboutRoutes,
-    aboutInnerRoutes,
-    notFoundRoutes,
   ]);
 
   return (
