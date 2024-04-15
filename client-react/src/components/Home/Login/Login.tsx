@@ -21,12 +21,16 @@ function Login(): JSX.Element {
 
 	useEffect(() => {
 		async function loadData() {
-			const storedToken = localStorage.getItem('token');
-			const response = await Api.getUsers();
-			setUsers(response.data.users);
+			try {
+				const storedToken = localStorage.getItem('token');
+				const response = await Api.getUsers();
+				setUsers(response.data.users);
 
-			if (storedToken) await sendAuthenticationRequest(storedToken);
-			setIsLoading(false);
+				if (storedToken) await sendAuthenticationRequest(storedToken);
+				setIsLoading(false);
+			} catch (e) {
+				console.error(e);
+			}
 		}
 
 		loadData();
